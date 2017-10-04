@@ -1,5 +1,5 @@
 import { Router } from 'express'
-
+import MongoDb from '../db/db'
 const router = Router()
 
 // Mock Users
@@ -8,10 +8,15 @@ const users = [
   { name: 'Pooya' },
   { name: 'Sébastien' },
 ]
-
+router.all('/',function(req,res){
+  console.log(req);
+})
 /* GET users listing. */
 router.get('/users', function (req, res, next) {
-  res.json(users)
+  MongoDb.insertData({}).then(result => {
+    res.json(result);
+  }).catch(err => res.sendStatus(500).send(err));
+
 })
 
 /* GET user by ID. */

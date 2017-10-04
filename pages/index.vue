@@ -18,11 +18,11 @@
 import axios from '~/plugins/axios'
 
 export default {
-  async asyncData () {
+  async asyncData() {
     let { data } = await axios.get('/api/users')
     return { users: data }
   },
-  head () {
+  head() {
     return {
       title: 'Users'
     }
@@ -31,18 +31,17 @@ export default {
 </script>
 
 <style scoped>
-.title
-{
+.title {
   margin: 30px 0;
 }
-.users
-{
+
+.users {
   list-style: none;
   margin: 0;
   padding: 0;
 }
-.user
-{
+
+.user {
   margin: 10px 0;
 }
 </style>

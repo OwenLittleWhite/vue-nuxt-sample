@@ -6,7 +6,7 @@
 /**
  * declare model
  */
-import MongoDb from '../db/db'
+const MongoDb=require('../db/db') ;
 
 let Blog = function (options) {
   options = options || {};
@@ -17,15 +17,29 @@ let Blog = function (options) {
   this.tags = options.tags || [];
 };
 
-Blog.findAll = async function (options) {
+Blog.findAll = function (options) {
   options = options || {};
+  return findConditionsFromDb(options);
 };
 
 Blog.create = function (options) {
   options = options || {};
-  createToDatabase(options)
+  console.log(options);
+  console.log("---------");
+  let blog = new Blog(options);
+  return createToDatabase(blog);
 }
 
-// let createToDatabase = async function (options) {
-//   MongoDb.
-// }
+let findConditionsFromDb = function(conditions){
+  return MongoDb.findByConditions(conditions);
+}
+
+let createToDatabase = function (blog) {
+  return new Promise(function (resolve, reject) {
+    MongoDb.insertData(blog).then(blogs => {
+      resolve(blogs[0]);
+    }).catch(err => { reject(err) });
+  })
+
+}
+module.exports = Blog;

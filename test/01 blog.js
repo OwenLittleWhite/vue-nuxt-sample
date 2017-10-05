@@ -1,8 +1,28 @@
-var assert = require('assert');
-describe('Array', function() {
-  describe('#indexOf()', function() {
-    it('should return -1 when the value is not present', function() {
-      assert.equal(-1, [1,2,3].indexOf(4));
+const assert = require('assert');
+const Blog = require('../server/model/blog');
+describe('Blog', function () {
+
+
+    // it('Blog create', function (done) {
+    //   Blog.create({ title: 'test' })
+    //     .then(data => {
+    //       //console.log(data);
+    //       done();
+    //     }).catch(err => {
+    //      // console.log(err);
+    //       done();
+    //     })
+    // });
+
+    it('Blog find', function (done) {
+      Blog.findAll({})
+        .then(data => {
+          console.log(data);
+          done();
+        }).catch(err => {
+          console.log(err);
+          done();
+        })
     });
-  });
+
 });

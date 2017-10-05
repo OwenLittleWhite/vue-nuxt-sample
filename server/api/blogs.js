@@ -18,8 +18,6 @@ router.get('/blogs', function (req, res, next) {
 
 /* GET user by ID. */
 router.post('/blogs', function (req, res, next) {
-  console.log(req.body);
-  console.log("**********")
   Blog.create(req.body).then(blog=>{
     res.send(blog);
   }).catch(err=>{

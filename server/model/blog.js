@@ -24,8 +24,6 @@ Blog.findAll = function (options) {
 
 Blog.create = function (options) {
   options = options || {};
-  console.log(options);
-  console.log("---------");
   let blog = new Blog(options);
   return createToDatabase(blog);
 }

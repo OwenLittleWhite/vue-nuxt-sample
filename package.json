@@ -19,7 +19,8 @@
     "express": "^4.15.3",
     "mongodb": "^2.2.31",
     "nuxt": "^1.0.0-rc3",
-    "source-map-support": "^0.4.15"
+    "source-map-support": "^0.4.15",
+    "vuetify": "^0.16.2"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",

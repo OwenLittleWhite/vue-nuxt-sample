@@ -21,11 +21,12 @@ module.exports = {
   ** Add axios globally
   */
   build: {
-    vendor: ['axios'],
+    vendor: ['axios', 'vuetify'],
+    plugins: ['~plugins/vuetify'],
     /*
     ** Run ESLINT on save
     */
-    extend (config, ctx) {
+    extend(config, ctx) {
       if (ctx.isClient) {
         config.module.rules.push({
           enforce: 'pre',

@@ -20,9 +20,11 @@ module.exports = {
   /*
   ** Add axios globally
   */
+  plugins: ['~plugins/vuetify'],
+  
   build: {
     vendor: ['axios', 'vuetify'],
-    plugins: ['~plugins/vuetify'],
+    
     /*
     ** Run ESLINT on save
     */

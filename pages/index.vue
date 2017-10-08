@@ -1,34 +1,110 @@
 <template>
-  <section class="container">
-    <img src="~assets/img/logo.png" alt="Nuxt.js Logo" class="logo" />
-    <h1 class="title">
-      USERS
-    </h1>
-    <ul class="users">
-      <li v-for="(user, index) in users" :key="index" class="user">
-        <nuxt-link :to="{ name: 'id', params: { id: index }}">
-          {{ user.name }}
-        </nuxt-link>
-      </li>
-    </ul>
-  </section>
+  <div id="app">
+    <v-app light>
+      <main>
+        <v-content>
+          <v-container>
+            <v-layout row wrap align-center>
+              <v-flex xs12 md4>
+                <div class="text-xs-center">
+                  <v-avatar size="125px">
+                    <img class="img-circle elevation-7 mb-1" src="https://raw.githubusercontent.com/vuetifyjs/docs/dev/static/doc-images/lists/1.jpg">
+                  </v-avatar>
+                  <h4>John
+                    <span style="font-weight:bold">Carter</span>
+                  </h4>
+                  <h5 class="text-xs-center">Lorem ipsum dolor sit amet</h5>
+                  <v-layout justify-space-between>
+                    <a href="javascript:;" class="body-2">Home</a>
+                    <a href="javascript:;" class="body-2">About</a>
+                    <a href="javascript:;" class="body-2">Github</a>
+                    <a href="javascript:;" class="body-2">Other</a>
+                  </v-layout>
+                </div>
+              </v-flex>
+              <v-flex xs12 md5 offset-md2>
+                <div v-for="post in posts" :key="post.title">
+                  <v-card class="my-3" hover>
+                    <v-card-media class="white--text" height="170px" :src="post.imgUrl">
+                      <v-container fill-height fluid>
+                        <v-layout fill-height>
+                          <v-flex xs12 align-end flexbox>
+                            <span class="headline">{{ post.title }}</span>
+                          </v-flex>
+                        </v-layout>
+                      </v-container>
+                    </v-card-media>
+                    <v-card-text>
+                      {{ post.content }}
+                    </v-card-text>
+                    <v-card-actions>
+                      <v-btn icon class="red--text">
+                        <v-icon medium>fa-reddit</v-icon>
+                      </v-btn>
+                      <v-btn icon class="light-blue--text">
+                        <v-icon medium>fa-twitter</v-icon>
+                      </v-btn>
+                      <v-btn icon class="blue--text text--darken-4">
+                        <v-icon medium>fa-facebook</v-icon>
+                      </v-btn>
+                      <v-spacer></v-spacer>
+                      <v-btn flat class="blue--text">Read More</v-btn>
+                    </v-card-actions>
+                  </v-card>
+                </div>
+              </v-flex>
+            </v-layout>
+          </v-container>
+        </v-content>
+      </main>
+      <v-footer class="secondary" app>
+        <v-layout row wrap align-center>
+          <v-flex xs12>
+            <div class="white--text ml-3">
+              Made with
+              <v-icon class="red--text">favorite</v-icon>
+              by
+              <a class="white--text" href="https://vuetifyjs.com" target="_blank">Vuetify</a>
+              and
+              <a class="white--text" href="https://github.com/vwxyzjn" target="_blank">Costa Huang</a>
+            </div>
+          </v-flex>
+        </v-layout>
+      </v-footer>
+    </v-app>
+  </div>
 </template>
 
 <script>
-import axios from '~/plugins/axios'
-
+import Vuetify from 'vuetify'
+import Vue from 'vue'
+Vue.use(Vuetify)
 export default {
-  async asyncData() {
-    let { data } = await axios.get('/api/blogs')
-    return { users: data }
-  },
-  head() {
+  data() {
     return {
-      title: 'Users'
+      title: 'Your Logo',
+      posts: [
+        {
+          title: 'Fusce ullamcorper tellus sed maximus',
+          content: 'Fusce ullamcorper tellus sed maximus rutrum. Donec imperdiet ultrices maximus. Donec non tellus non neque pellentesque fermentum. Aenean in pellentesque urna.',
+          imgUrl: 'https://raw.githubusercontent.com/vuetifyjs/docs/dev/static/doc-images/cards/drop.jpg'
+        },
+        {
+          title: 'Donec vitae suscipit lectus, a luctus diam.',
+          content: 'Donec vitae suscipit lectus, a luctus diam. Proin vitae felis gravida, lobortis massa sit amet, efficitur erat. Morbi vel ultrices nisi. Aenean arcu sapien, rutrum nec mollis id, condimentum quis orci.',
+          imgUrl: 'https://raw.githubusercontent.com/vuetifyjs/docs/dev/static/doc-images/cards/docks.jpg'
+        },
+        {
+          title: 'Vestibulum condimentum quam eu est convallis',
+          content: ' at sagittis sapien vulputate. Vivamus laoreet lacus id magna rutrum dapibus. Donec vel pellentesque arcu. Maecenas mollis odio tempus felis elementum commodo. Quisque gravida, est quis tincidunt bibendum, nibh elit dapibus mauris.',
+          imgUrl: 'https://raw.githubusercontent.com/vuetifyjs/docs/dev/static/doc-images/cards/plane.jpg'
+        }
+      ]
     }
   }
 }
 </script>
 
 <style scoped>
+
 </style>

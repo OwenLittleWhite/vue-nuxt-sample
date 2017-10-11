@@ -6,7 +6,7 @@
 /**
  * declare model
  */
-const MongoDb=require('../db/db') ;
+const MongoDb = require('../db/db');
 
 let Blog = function (options) {
   options = options || {};
@@ -28,7 +28,7 @@ Blog.create = function (options) {
   return createToDatabase(blog);
 }
 
-let findConditionsFromDb = function(conditions){
+let findConditionsFromDb = function (conditions) {
   return MongoDb.findByConditions(conditions);
 }
 

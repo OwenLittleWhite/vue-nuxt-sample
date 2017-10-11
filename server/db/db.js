@@ -2,7 +2,7 @@ var MongoClient = require('mongodb').MongoClient;
 var DB_CONN_STR = 'mongodb://localhost:27017/personal_blog';
 var MongoDb = {};
 
-MongoDb.insertData =function (blog) {
+MongoDb.insertData = function (blog) {
   return new Promise(function (resolve, reject) {
     MongoClient.connect(DB_CONN_STR).then(db => {
       var collection = db.collection('blogs');
@@ -14,12 +14,12 @@ MongoDb.insertData =function (blog) {
   })
 }
 
-MongoDb.findByConditions = function(conditions){
-  return new Promise(function(resolve,reject){
+MongoDb.findByConditions = function (conditions) {
+  return new Promise(function (resolve, reject) {
     MongoClient.connect(DB_CONN_STR).then(db => {
       let collection = db.collection('blogs');
-     resolve(collection.find(conditions).toArray());
-     db.close();
+      resolve(collection.find(conditions).toArray());
+      db.close();
     }).catch(err => { reject(err) })
 
   })

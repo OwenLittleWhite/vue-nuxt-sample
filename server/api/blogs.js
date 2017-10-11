@@ -3,24 +3,21 @@ import Blog from '../model/blog'
 const router = Router()
 
 
-/* GET Blog listing. */
+/* GET Blogs listing. */
 router.get('/blogs', function (req, res, next) {
-  // MongoDb.insertData({}).then(result => {
-  //   res.json(result);
-  // }).catch(err => res.sendStatus(500).send(err));
-  Blog.findAll({}).then(blogs=>{
+  Blog.findAll({}).then(blogs => {
     res.send(blogs);
-  }).catch(err=>{
+  }).catch(err => {
     res.sendStatus(err.code).send(err.message);
   })
 
 })
 
-/* GET user by ID. */
+/* Create a blog */
 router.post('/blogs', function (req, res, next) {
-  Blog.create(req.body).then(blog=>{
+  Blog.create(req.body).then(blog => {
     res.send(blog);
-  }).catch(err=>{
+  }).catch(err => {
     res.sendStatus(err.code).send(err.message);
   })
 })

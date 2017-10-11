@@ -4,7 +4,7 @@ import blogs from './blogs'
 
 const router = Router()
 
-// Add USERS Routes
+// Add BLOGS Routes
 router.use(blogs)
 
 export default router
